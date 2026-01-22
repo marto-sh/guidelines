@@ -44,6 +44,7 @@ This skill should _not_ be used for:
 5. **Write Activation Criteria:** In the "When to Use" section, write precise activation criteria. Clearly state when the skill SHOULD and SHOULD NOT be used, following the progressive disclosure principle where the agent should only load detailed instructions when needed.
 6. **Refine Instructions:** When writing the instructions, adhere to the following best practices:
    - **Atomicity:** Each step should correspond to a single, distinct action.
+   - **Clarity:** Use lists and bullet points to break down complex ideas. Prefer bullet points over long, comma-separated sentences.
    - **Tool Mapping:** Map each action to a specific, available tool (e.g., `run_shell_command`, `read_file`, `replace`).
    - **Context Awareness:** Instruct the agent to analyze existing project files, code, and conventions before making changes.
    - **Safety and Verification:** Include steps for verification, such as running tests, linters, or build commands after a modification.
