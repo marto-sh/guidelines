@@ -1,0 +1,62 @@
+//! Template for a Value Object in Rust.
+//!
+//! A Value Object is defined by its attributes and is immutable.
+//! Equality is based on the values of its fields.
+
+use std::error::Error;
+
+/// A descriptive name for your Value Object.
+/// Deriving `Debug`, `Clone`, `Copy`, `PartialEq`, and `Eq` is standard for VOs.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct [ValueObjectName] {
+    // Make fields private to enforce immutability and control construction.
+    // Example:
+    // value: String,
+}
+
+impl [ValueObjectName] {
+    /// Factory method to create a new Value Object.
+    /// This is where you enforce invariants (business rules).
+    pub fn new(/* parameters */) -> Result<Self, Box<dyn Error>> {
+        // --- Validation Logic ---
+        // if validation_fails {
+        //     return Err("Invalid value for [ValueObjectName]".into());
+        // }
+
+        Ok(Self { /* field values */ })
+    }
+
+    /// Add methods that provide useful, side-effect-free behavior.
+    
+    // --- Accessor methods ---
+    // pub fn value(&self) -> &str {
+    //     &self.value
+    // }
+}
+
+// --- Example Tests ---
+/*
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn should_create_valid_value_object() {
+        let vo = [ValueObjectName]::new(/* valid params */);
+        assert!(vo.is_ok());
+    }
+
+    #[test]
+    fn should_fail_on_invalid_value() {
+        let vo = [ValueObjectName]::new(/* invalid params */);
+        assert!(vo.is_err());
+    }
+
+    #[test]
+    fn should_be_equal_if_values_are_the_same() {
+        let vo1 = [ValueObjectName]::new(/* params */).unwrap();
+        let vo2 = [ValueObjectName]::new(/* same params */).unwrap();
+        assert_eq!(vo1, vo2);
+    }
+}
+*/

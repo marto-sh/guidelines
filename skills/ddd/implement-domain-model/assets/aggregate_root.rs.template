@@ -1,0 +1,81 @@
+//! Template for an Aggregate Root in Rust.
+//!
+//! The Aggregate Root is the main entry point to a consistency boundary.
+//! It protects the business invariants for all objects within the aggregate.
+
+use uuid::Uuid;
+
+// --- ID Types (Value Objects) ---
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct [AggregateRootName]Id(Uuid);
+
+// --- Child Entity / Value Object Definitions ---
+// (Define any internal entities or value objects used by the aggregate here)
+
+
+// --- The Aggregate Root ---
+#[derive(Debug)]
+pub struct [AggregateRootName] {
+    id: [AggregateRootName]Id,
+    // --- Internal State ---
+    // Fields should be private to enforce encapsulation.
+    // E.g., line_items: Vec<LineItem>,
+}
+
+impl [AggregateRootName] {
+    // --- Creation ---
+
+    /// Public factory method for creating a new Aggregate.
+    /// This is where you enforce invariants that must be true upon creation.
+    pub fn create(/* parameters */) -> Result<Self, &'static str> {
+        // --- Validation logic ---
+        // if creation_rules_fail {
+        //     return Err("Cannot create [AggregateRootName] due to...");
+        // }
+        
+        let root = Self {
+            id: [AggregateRootName]Id(Uuid::new_v4()),
+            // ... initialize fields
+        };
+
+        // Optional: Add a domain event for creation
+        // root.add_event([AggregateRootName]Created { ... });
+        
+        Ok(root)
+    }
+
+    // --- Public Behavior Methods ---
+
+    /// Expose methods that represent commands or actions from the domain.
+    /// These methods are the only way to modify the aggregate's state.
+    pub fn perform_action(&mut self, /* parameters */) -> Result<(), &'static str> {
+        // --- Invariant Checks ---
+        // Protect the aggregate's business rules.
+        // if business_rule_is_violated {
+        //     return Err("Business rule violation: ...");
+        // }
+        
+        // --- State Modification ---
+        // Modify internal state here.
+        // self.some_field = new_value;
+        
+        // --- Domain Events ---
+        // Record that something significant happened.
+        // self.add_event(ActionWasPerformed { ... });
+        
+        Ok(())
+    }
+
+    // --- Accessors ---
+
+    /// Provide read-only access to the ID and other necessary properties.
+    /// Avoid exposing mutable access to internal collections.
+    pub fn id(&self) -> [AggregateRootName]Id {
+        self.id
+    }
+    
+    // Example: Exposing an internal collection immutably
+    // pub fn line_items(&self) -> &Vec<LineItem> {
+    //     &self.line_items
+    // }
+}
