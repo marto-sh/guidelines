@@ -1,0 +1,27 @@
+# The 'Feature' keyword provides a high-level description of a software feature.
+# The text that follows should explain the value of this feature.
+Feature: [Feature Title]
+
+  # The lines between 'Feature' and the first 'Scenario' can be used to
+  # provide more context, often in the form of "As a [role], I want [feature], so that [benefit]".
+  # Example:
+  # As a user,
+  # I want to be able to reset my password,
+  # So that I can regain access to my account if I forget it.
+
+# --- Scenarios ---
+
+# A 'Scenario' is a concrete example that illustrates a business rule.
+# It should describe a single, specific behavior.
+Scenario: A sample positive scenario (e.g., successful operation)
+  Given a specific context or precondition
+  And another precondition
+  When a key action is performed by the user or system
+  Then a specific, observable outcome should happen
+  And another outcome should also be validated
+
+# It's good practice to include scenarios for both success and failure cases.
+Scenario: A sample negative scenario (e.g., handling an error)
+  Given a different context or precondition
+  When an action that should fail is performed
+  Then a specific error or failure outcome should be observed

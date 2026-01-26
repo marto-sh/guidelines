@@ -1,0 +1,60 @@
+//! Template for an Entity in Rust.
+//!
+//! An Entity is defined by its unique identity, not just its attributes.
+//! Its state can change over time.
+
+use uuid::Uuid;
+
+// The unique identifier for this Entity.
+// This is often a Value Object itself.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct [EntityName]Id(Uuid);
+
+impl [EntityName]Id {
+    pub fn new() -> Self {
+        Self(Uuid::new_v4())
+    }
+}
+
+/// A descriptive name for your Entity.
+#[derive(Debug)]
+pub struct [EntityName] {
+    id: [EntityName]Id,
+    // other fields...
+}
+
+impl [EntityName] {
+    /// The constructor for the Entity.
+    /// For internal entities of an aggregate, this might be `pub(crate)`.
+    pub fn new(/* parameters */) -> Self {
+        Self {
+            id: [EntityName]Id::new(),
+            // ...
+        }
+    }
+
+    /// Public methods that implement the Entity's behavior and modify its state.
+    pub fn perform_action(&mut self, /* parameters */) -> Result<(), &'static str> {
+        // Business logic and invariants
+        // ...
+        // Modify state
+        // self.field = new_value;
+        Ok(())
+    }
+    
+    // --- Accessors ---
+    
+    pub fn id(&self) -> [EntityName]Id {
+        self.id
+    }
+}
+
+// --- Equality ---
+// Equality for an Entity is based on its ID, not its other attributes.
+// We must implement this manually.
+impl PartialEq for [EntityName] {
+    fn eq(&self, other: &Self) -> bool {
+        self.id == other.id
+    }
+}
+impl Eq for [EntityName] {}
