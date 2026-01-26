@@ -1,0 +1,45 @@
+//! Template for a Repository Trait in Rust.
+//!
+//! The repository's interface (trait) belongs in the domain layer.
+//! It defines the contract for how aggregates are persisted and retrieved,
+//! without specifying the underlying technology.
+
+use async_trait::async_trait;
+use std::error::Error;
+
+// Import the Aggregate Root and its ID from your domain model.
+// use crate::domain::aggregates::{[AggregateRootName], [AggregateRootName]Id};
+
+/// A custom error type for your domain, so you don't leak
+/// database-specific errors from your repository implementations.
+#[derive(Debug)]
+pub struct DomainError(String);
+
+impl std::fmt::Display for DomainError {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+impl Error for DomainError {}
+
+
+/// The repository trait for the `[AggregateRootName]` aggregate.
+/// The methods should operate on the aggregate as a whole.
+#[async_trait]
+pub trait [AggregateRootName]Repository {
+
+    /// Finds an aggregate by its unique ID.
+    async fn find_by_id(&self, id: [AggregateRootName]Id) -> Result<Option<[AggregateRootName]>, DomainError>;
+    
+    /// Saves the current state of an aggregate.
+    /// This could be either an insert or an update.
+    async fn save(&self, aggregate: &[AggregateRootName]) -> Result<(), DomainError>;
+    
+    /// Deletes an aggregate from the repository.
+    async fn delete(&self, id: [AggregateRootName]Id) -> Result<(), DomainError>;
+    
+    // Add other query methods as needed by the domain.
+    // E.g., find_by_customer_id, get_all_pending, etc.
+    //
+    // async fn find_by_...(&self, ...) -> Result<Vec<[AggregateRootName]>, DomainError>;
+}
