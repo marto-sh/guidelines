@@ -76,8 +76,8 @@ How does this list look? Are these the types of competitors you had in mind?"
 
 Analyze the user's feedback to determine the next steps.
 
-- **If the user confirms the list is relevant (Success Criteria met):** The skill is complete. You can now offer to perform a more detailed analysis on one or more of the identified competitors.
-  - *Example prompt:* "Great! I can now perform a more detailed analysis on any of these competitors. Which one would you like to focus on?"
+- **If the user confirms the list is relevant (Success Criteria met):** The skill is complete. Offer to perform a deep-dive analysis on one of the competitors using the `analyze-competitor` skill.
+  - *Example prompt:* "Great! Now that we have this list, I can perform a detailed analysis on any of these competitors using the `analyze-competitor` skill. Which one would you like to focus on?"
 
 - **If the user finds the list irrelevant or incomplete (Failure Criteria met):**
   - Ask for more specific information. What's missing? Are there keywords or concepts that were overlooked?
