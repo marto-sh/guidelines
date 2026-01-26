@@ -1,0 +1,86 @@
+# Rust Convention Configuration - HARDCORE MODE
+# Strict, automation-first approach using clippy for enforcement
+
+[clippy]
+# Core Rust idioms - align with stdlib patterns
+std_instead_of_alloc = true
+std_instead_of_core = true
+std_instead_of_io = true
+
+# HARDCORE: Strict module organization
+module_instead_of_mod_rs = "deny"   # Require explicit module files
+wildcard_imports = "deny"           # Forbid wildcard imports
+
+[lints]
+# Enable all lints including pedantic and nursery
+warn = [
+    "clippy::all",
+    "clippy::pedantic",
+    "clippy::nursery",
+    
+    # Specific lints we want to ensure are enabled
+    "clippy::module_name_repetitions",
+    "clippy::redundant_closure_for_method_calls",
+    "clippy::unnecessary_wraps",
+    "clippy::result_unwrap_used",
+    "clippy::option_unwrap_used",
+]
+
+# HARDCORE: Minimal exceptions - only practical ones remain
+allow = [
+    "clippy::missing_errors_doc",      # Still allow missing error docs (common in practice)
+    "clippy::missing_panics_doc",      # Still allow missing panic docs (common in practice)
+]
+
+# Project-specific conventions - HARDCORE EDITION
+# These are the ONLY manual conventions we maintain
+
+[conventions]
+# 1. Error Handling Strategy (STRICT)
+# - Libraries: Use thiserror for structured errors
+# - Applications: Use anyhow for ergonomic error handling
+# - Never use String for errors in public APIs
+# - All errors must be properly documented
+
+# 2. Module Organization (STRICT)
+# - Require explicit module files over mod.rs
+# - Avoid utils.rs - create focused modules instead
+# - Group related functionality together
+# - No wildcard imports allowed
+# - Module names must be clear and non-repetitive
+
+# 3. Async Patterns (STRICT)
+# - No _async suffixes on function names
+# - Use async/await for I/O-bound operations
+# - Consider tokio::spawn for CPU-bound work in async contexts
+# - Avoid async fn in traits (use workarounds)
+# - All async code must have proper error handling
+
+# 4. Testing Strategy (STRICT)
+# - Unit tests: #[cfg(test)] mod tests { ... } alongside code
+# - Integration tests: tests/ directory at crate root
+# - Use assert_matches! for complex assertions
+# - All public functions must have tests
+# - All tests must pass before merge
+
+# 5. Documentation (STRICT)
+# - Public APIs: Comprehensive doc comments with examples REQUIRED
+# - Private items: Documentation required for all non-trivial items
+# - Use // for implementation notes, /// for API documentation
+# - All documentation must be proper markdown
+# - All public items must have documentation
+
+# 6. Code Quality (STRICT)
+# - Keep functions focused and simple
+# - Limit cognitive and cyclomatic complexity
+# - Avoid excessive boolean parameters
+# - Keep generic bounds reasonable
+# - No unwraps or expects in production code
+# - All code must compile without warnings
+
+# 7. Code Review (STRICT)
+# - All changes must be reviewed
+# - All lints must pass
+# - All tests must pass
+# - Documentation must be complete
+# - No merge without approval
