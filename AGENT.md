@@ -14,7 +14,7 @@ The development process heavily emphasizes Behavior-Driven Development (BDD) and
 *   **DDD:** For domain modeling and strategic design, consult the DDD skills in `skills/ddd/`.
 *   **Development Process:** A detailed explanation of the development process can be found in `DEVELOPMENT_PROCESS.md`.
 
-## Skill Authoring
+<h2>Skill Authoring</h2>
 
 To maintain a high standard of skills, a dedicated skill for authoring new skills is available. Please refer to `skills/skill/authoring/SKILL.md` when you are tasked with creating a new skill. Adhering to this guide will ensure that new skills are well-defined, effective, and consistent with the existing skill set.
 
