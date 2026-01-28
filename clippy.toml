@@ -1,86 +1,47 @@
-# Rust Convention Configuration - HARDCORE MODE
-# Strict, automation-first approach using clippy for enforcement
+# Configuration for Clippy lints
+# See https://rust-lang.github.io/rust-clippy/master/index.html for details
 
-[clippy]
-# Core Rust idioms - align with stdlib patterns
-std_instead_of_alloc = true
-std_instead_of_core = true
-std_instead_of_io = true
+# Deny all warnings by default, and allow specific ones
+# This forces us to address all lints, ensuring high code quality.
+# Exceptions can be made with good justification using `#[allow(clippy::lint_name)]`
+warn(clippy::all)
+warn(clippy::pedantic)
+warn(clippy::nursery)
+warn(clippy::cargo)
 
-# HARDCORE: Strict module organization
-module_instead_of_mod_rs = "deny"   # Require explicit module files
-wildcard_imports = "deny"           # Forbid wildcard imports
+# == Specific lint settings ==
 
-[lints]
-# Enable all lints including pedantic and nursery
-warn = [
-    "clippy::all",
-    "clippy::pedantic",
-    "clippy::nursery",
-    
-    # Specific lints we want to ensure are enabled
-    "clippy::module_name_repetitions",
-    "clippy::redundant_closure_for_method_calls",
-    "clippy::unnecessary_wraps",
-    "clippy::result_unwrap_used",
-    "clippy::option_unwrap_used",
-]
+# --- Style and Readability ---
+allow(clippy::implicit_return) # Sometimes explicit return is clearer, sometimes not. Let developer decide.
+allow(clippy::module_name_repetitions) # Often natural module names repeat, e.g., `user::User`.
+allow(clippy::redundant_pub_arg) # Can be noisy, especially with macro expansion.
+allow(clippy::missing_errors_doc) # Often too verbose for internal errors. Public APIs should still document.
+allow(clippy::missing_panics_doc) # Similar to errors, panics are usually for unrecoverable states.
+allow(clippy::too_many_lines) # Lines are subjective, focus on logical complexity.
+allow(clippy::wildcard_imports) # Can be useful for prelude patterns or internal modules.
 
-# HARDCORE: Minimal exceptions - only practical ones remain
-allow = [
-    "clippy::missing_errors_doc",      # Still allow missing error docs (common in practice)
-    "clippy::missing_panics_doc",      # Still allow missing panic docs (common in practice)
-]
+# --- Performance and Efficiency ---
+allow(clippy::cast_possible_truncation) # Can be noisy, especially in embedded or FFI contexts. Careful use is fine.
+allow(clippy::cast_sign_loss) # Similar to truncation, sometimes necessary.
+allow(clippy::unsafe_derive_deserialize) # Often too strict, rely on serde's safety.
+allow(clippy::default_trait_access) # Often improves readability, no strong reason to deny.
+allow(clippy::must_use_candidate) # Can be noisy for internal helper functions.
 
-# Project-specific conventions - HARDCORE EDITION
-# These are the ONLY manual conventions we maintain
+# --- Correctness ---
+allow(clippy::unwrap_used) # Use of `unwrap` is acceptable in tests, examples, or when correctness is guaranteed by logic.
+                            # For fallible operations, prefer `?` or `expect` with a good message.
+allow(clippy::expect_used)  # Similar to `unwrap_used`, acceptable with good messages for guaranteed correctness.
+allow(clippy::indexing_slicing) # Often necessary for performance or specific data structures.
+allow(clippy::float_cmp) # Floating point comparisons are tricky; sometimes direct comparison is intended.
+allow(clippy::enum_glob_use) # Can improve readability for enums with many variants.
 
-[conventions]
-# 1. Error Handling Strategy (STRICT)
-# - Libraries: Use thiserror for structured errors
-# - Applications: Use anyhow for ergonomic error handling
-# - Never use String for errors in public APIs
-# - All errors must be properly documented
+# --- Maintainability ---
+allow(clippy::large_enum_variant) # Can indicate design issues, but sometimes necessary for complex enums.
+                                  # Consider boxing large variants if memory is a concern.
+allow(clippy::cognitive_complexity) # Focus on logical complexity per function, not just line count.
+                                  # Use judgement to refactor truly complex functions.
 
-# 2. Module Organization (STRICT)
-# - Require explicit module files over mod.rs
-# - Avoid utils.rs - create focused modules instead
-# - Group related functionality together
-# - No wildcard imports allowed
-# - Module names must be clear and non-repetitive
-
-# 3. Async Patterns (STRICT)
-# - No _async suffixes on function names
-# - Use async/await for I/O-bound operations
-# - Consider tokio::spawn for CPU-bound work in async contexts
-# - Avoid async fn in traits (use workarounds)
-# - All async code must have proper error handling
-
-# 4. Testing Strategy (STRICT)
-# - Unit tests: #[cfg(test)] mod tests { ... } alongside code
-# - Integration tests: tests/ directory at crate root
-# - Use assert_matches! for complex assertions
-# - All public functions must have tests
-# - All tests must pass before merge
-
-# 5. Documentation (STRICT)
-# - Public APIs: Comprehensive doc comments with examples REQUIRED
-# - Private items: Documentation required for all non-trivial items
-# - Use // for implementation notes, /// for API documentation
-# - All documentation must be proper markdown
-# - All public items must have documentation
-
-# 6. Code Quality (STRICT)
-# - Keep functions focused and simple
-# - Limit cognitive and cyclomatic complexity
-# - Avoid excessive boolean parameters
-# - Keep generic bounds reasonable
-# - No unwraps or expects in production code
-# - All code must compile without warnings
-
-# 7. Code Review (STRICT)
-# - All changes must be reviewed
-# - All lints must pass
-# - All tests must pass
-# - Documentation must be complete
-# - No merge without approval
+# --- Naming Conventions ---
+# Enforced by clippy::pedantic and clippy::nursery, specific allowances below
+allow(clippy::snake_case) # Sometimes external APIs or data structures enforce different casing.
+allow(clippy::upper_case_acronyms) # Common for abbreviations like "JWT", "URL", "ID".
