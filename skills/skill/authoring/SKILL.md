@@ -27,7 +27,7 @@ This skill should _not_ be used for:
 3. **Define Skill Anatomy:** Based on the gathered information, structure the new skill following the open Agent Skills standard. A skill is a directory containing:
    - **`SKILL.md` (Required):** The core skill file with:
      - **YAML Frontmatter:** Metadata including:
-       - `name`: Unique, descriptive, atomic identifier (e.g., `git/commit_changes`, `server/deploy_to_production`)
+       - `name`: Unique, descriptive, atomic identifier using **action-oriented naming** with verb-noun pattern (e.g., `architecture/create-adr`, `bdd/author-and-implement-features`, `ddd/write-domain-vision`, `strategy/find-competitors`). Avoid noun-only names like `adr-best-practices` or `competitor-analysis`.
        - `description`: Detailed explanation of what the skill does and when to use it
        - `allowed-tools` (optional): List of specific tools the skill is permitted to use
      - **Markdown Body:** Detailed, step-by-step instructions for the agent
