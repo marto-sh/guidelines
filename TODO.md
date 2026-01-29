@@ -18,3 +18,4 @@
 ## Documentation
 
 - [ ] Define philosophy and guiding principles
+  - [ ] Flesh out bet: "Agents will code better than humans"
