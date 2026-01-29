@@ -14,6 +14,16 @@ The development process heavily emphasizes Behavior-Driven Development (BDD) and
 *   **DDD:** For domain modeling and strategic design, consult the DDD skills in `skills/ddd/`.
 *   **Development Process:** A detailed explanation of the development process can be found in `DEVELOPMENT_PROCESS.md`.
 
+## Clarifying Requirements
+
+When requirements are unclear or ambiguous, always seek clarification from the human user before proceeding. Do not make assumptions about the user's intent. Ask specific questions to ensure you understand:
+
+*   The desired outcome and acceptance criteria
+*   Any constraints or preferences
+*   Edge cases or scenarios that need to be handled
+
+It is better to ask for clarification upfront than to deliver something that does not match the user's expectations.
+
 ## Skill Authoring
 
 To maintain a high standard of skills, a dedicated skill for authoring new skills is available. Please refer to `skills/skill/authoring/SKILL.md` when you are tasked with creating a new skill. Adhering to this guide will ensure that new skills are well-defined, effective, and consistent with the existing skill set.
