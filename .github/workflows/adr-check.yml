@@ -1,0 +1,27 @@
+name: ADR Check
+
+on:
+  push:
+    paths:
+      - 'doc/adr/**'
+  pull_request:
+    paths:
+      - 'doc/adr/**'
+
+jobs:
+  adr-doctor:
+    name: Validate ADRs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install adrs tool
+        run: |
+          curl -L -o adrs.tar.gz https://github.com/joshrotenberg/adrs/releases/latest/download/adrs-x86_64-unknown-linux-gnu.tar.gz
+          tar -xzf adrs.tar.gz
+          chmod +x adrs
+          sudo mv adrs /usr/local/bin/
+
+      - name: Run adrs doctor
+        run: adrs doctor
