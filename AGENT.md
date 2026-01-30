@@ -22,6 +22,14 @@ When requirements are unclear or ambiguous, always seek clarification from the h
 *   Any constraints or preferences
 *   Edge cases or scenarios that need to be handled
 
+**Use a picker with options.** When clarification is needed, present questions with a picker of options rather than open-ended prose. Each question should offer 2-4 clear choices with brief descriptions of what each option entails. Always allow for a custom response in case none of the options fit.
+
+You may ask several questions in a row, but present them one at a time so the user can focus on each decision individually. This approach:
+
+*   Reduces cognitive load on the user
+*   Ensures each answer is considered carefully
+*   Allows follow-up questions to adapt based on previous answers
+
 It is better to ask for clarification upfront than to deliver something that does not match the user's expectations.
 
 ## Skill Authoring
