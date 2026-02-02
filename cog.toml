@@ -13,6 +13,7 @@ scopes = [
     "adr",           # Architecture Decision Records
     "bet",           # Bet records (foundational beliefs)
     "agent",         # Agent instructions and guidelines
+    "todo",          # TODO tracking
 
     # Skills
     "skill",         # Skill authoring and templates
