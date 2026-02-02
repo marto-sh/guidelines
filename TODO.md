@@ -2,20 +2,17 @@
 
 ## Skills to Create
 
-- [ ] Add a review changes skill
+- [ ] Add a code review skill (review PRs or commits)
 - [ ] Add a learning skill whenever human gives feedback for the agent to remember
-
-## Features to Add
-
-- [ ] Add ability for different LLMs to call each other
 
 ## ADRs to Create
 
-- [ ] Semantic commits
+- [ ] Atomic commits
 - [ ] Testing
-- [ ] Programming language
+- [ ] Multi-agent collaboration in development
+- [ ] TODO context preservation (capture reasoning and context for handoff)
 
 ## Documentation
 
 - [ ] Define philosophy and guiding principles
-  - [ ] Flesh out bet: "Agents will code better than humans"
+- [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
