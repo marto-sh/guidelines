@@ -1,3 +1,6 @@
 * [1. Record architecture decisions](0001-record-architecture-decisions.md)
 * [2. Use Bet Records to document foundational beliefs](0002-use-bet-records-to-document-foundational-beliefs.md)
 * [3. Use Rust as the Primary Programming Language](0003-use-rust-as-the-primary-programming-language.md)
+* [4. Use Conventional Commits](0004-use-conventional-commits.md)
+* [5. Use Nix-based Devcontainers for Development Environments](0005-use-nix-based-devcontainers-for-development-environments.md)
+* [6. Design Processes and Tools for Multi-Agent Collaboration](0006-design-processes-and-tools-for-multi-agent-collaboration.md)

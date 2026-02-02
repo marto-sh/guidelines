@@ -9,8 +9,11 @@
 
 - [ ] Atomic commits
 - [ ] Testing
-- [ ] Multi-agent collaboration in development
-- [ ] TODO context preservation (capture reasoning and context for handoff)
+- [ ] Context preservation (capture reasoning and context for handoff)
+- [ ] Git worktree isolation for parallel agent work
+- [ ] Agent PR reviews
+- [ ] Agent-human collaboration
+- [ ] Task partitioning (divide work to minimize agent conflicts)
 
 ## Documentation
 
