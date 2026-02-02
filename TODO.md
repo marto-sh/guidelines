@@ -15,6 +15,11 @@
 - [ ] Agent-human collaboration
 - [ ] Task partitioning (divide work to minimize agent conflicts)
 
+## Tooling
+
+- [ ] Linter/validator for BETs (ensure frontmatter, required sections, valid status)
+- [ ] Linter/validator for Experiments (ensure frontmatter, required sections, valid status)
+
 ## Documentation
 
 - [ ] Define philosophy and guiding principles
