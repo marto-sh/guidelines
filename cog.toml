@@ -1,0 +1,39 @@
+# Cocogitto configuration
+# See https://docs.cocogitto.io/ for full options
+
+# Check all commits by default. CI workflow specifies the PR range.
+# For local checks, run: cog check origin/main..HEAD
+from_latest_tag = false
+ignore_merge_commits = true
+
+# Allowed commit scopes
+# Scopes help categorize changes and improve changelog readability
+scopes = [
+    # Documentation
+    "adr",           # Architecture Decision Records
+    "bet",           # Bet records (foundational beliefs)
+    "agent",         # Agent instructions and guidelines
+
+    # Skills
+    "skill",         # Skill authoring and templates
+    "bdd",           # Behavior-Driven Development skills
+    "ddd",           # Domain-Driven Design skills
+
+    # Methodology
+    "process",       # Development process documentation
+    "architecture",  # Architecture guidelines
+    "conventions",   # Coding conventions
+
+    # Tooling
+    "ci",            # CI/CD workflows
+    "cocogitto",     # Conventional commits tooling
+    "devcontainer",  # Development container
+
+    # Research
+    "personas",           # User personas
+    "competitor-analysis" # Competitor analysis
+]
+
+[changelog]
+path = "CHANGELOG.md"
+template = "remote"
