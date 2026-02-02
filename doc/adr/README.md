@@ -4,3 +4,4 @@
 * [4. Use Conventional Commits](0004-use-conventional-commits.md)
 * [5. Use Nix-based Devcontainers for Development Environments](0005-use-nix-based-devcontainers-for-development-environments.md)
 * [6. Design Processes and Tools for Multi-Agent Collaboration](0006-design-processes-and-tools-for-multi-agent-collaboration.md)
+* [7. Use Experiments for Empirical Validation](0007-use-experiments-for-empirical-validation.md)
