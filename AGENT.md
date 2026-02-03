@@ -34,6 +34,21 @@ When requirements are unclear or ambiguous, always seek clarification from the h
 
 It is better to ask for clarification upfront than to deliver something that does not match the user's expectations.
 
+## Research Before Recommending
+
+Before designing experiments, proposing solutions, or making significant recommendations, conduct deep research on the topic:
+
+*   **Search for existing work:** Use `WebSearch` to find academic papers, industry benchmarks, and prior art related to the problem domain. Someone may have already studied this question.
+*   **Learn from established methodologies:** Look for standard approaches, common metrics, and known pitfalls in the relevant field.
+*   **Share findings proactively:** Summarize relevant research for the user (e.g., "I found three papers studying this exact question..."). This grounds the conversation in evidence rather than speculation.
+*   **Cite sources:** When research informs your recommendations, reference the sources so the user can evaluate them.
+
+This research phase is especially important for:
+*   Experiment design (avoid reinventing methodology)
+*   Architecture decisions (learn from others' experiences)
+*   Technology comparisons (find existing benchmarks)
+*   Novel problem domains (understand the state of the art)
+
 ## Skill Authoring
 
 To maintain a high standard of skills, a dedicated skill for authoring new skills is available. Please refer to `skills/skill/authoring/SKILL.md` when you are tasked with creating a new skill. Adhering to this guide will ensure that new skills are well-defined, effective, and consistent with the existing skill set.
