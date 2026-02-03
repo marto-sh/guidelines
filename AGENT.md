@@ -22,15 +22,32 @@ When requirements are unclear or ambiguous, always seek clarification from the h
 *   Any constraints or preferences
 *   Edge cases or scenarios that need to be handled
 
-**Use a picker with options.** When clarification is needed, present questions with a picker of options rather than open-ended prose. Each question should offer 2-4 clear choices with brief descriptions of what each option entails. Always allow for a custom response in case none of the options fit.
+**Use structured questions with multiple-choice options.** When clarification is needed, present questions with 2-4 clear choices and brief descriptions. Always allow for a custom response in case none of the options fit. Use your platform's dedicated tool if available (e.g., `AskUserQuestion` in Claude Code, `ask_user_question` in Mistral Vibe). If no dedicated tool exists, present numbered options in your text output.
 
-You may ask several questions in a row, but present them one at a time so the user can focus on each decision individually. This approach:
+**Group related questions into a single form.** When you have multiple related clarifications, group them (up to 4) into one form rather than asking them across separate responses. This:
 
-*   Reduces cognitive load on the user
-*   Ensures each answer is considered carefully
-*   Allows follow-up questions to adapt based on previous answers
+*   Reduces back-and-forth overhead
+*   Lets the user see the full scope of decisions needed
+*   Keeps related choices together for coherent decision-making
+
+**Keep questions focused and sequential.** If you have more than 4 questions, or if later questions depend heavily on earlier answers, split them across multiple form submissions. Ask the first batch, wait for answers, then ask follow-ups informed by those answers.
 
 It is better to ask for clarification upfront than to deliver something that does not match the user's expectations.
+
+## Research Before Recommending
+
+Before designing experiments, proposing solutions, or making significant recommendations, conduct deep research on the topic:
+
+*   **Search for existing work:** Use `WebSearch` to find academic papers, industry benchmarks, and prior art related to the problem domain. Someone may have already studied this question.
+*   **Learn from established methodologies:** Look for standard approaches, common metrics, and known pitfalls in the relevant field.
+*   **Share findings proactively:** Summarize relevant research for the user (e.g., "I found three papers studying this exact question..."). This grounds the conversation in evidence rather than speculation.
+*   **Cite sources:** When research informs your recommendations, reference the sources so the user can evaluate them.
+
+This research phase is especially important for:
+*   Experiment design (avoid reinventing methodology)
+*   Architecture decisions (learn from others' experiences)
+*   Technology comparisons (find existing benchmarks)
+*   Novel problem domains (understand the state of the art)
 
 ## Skill Authoring
 
