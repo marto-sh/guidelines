@@ -24,3 +24,8 @@
 
 - [ ] Define philosophy and guiding principles
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
+
+## Cross-Provider Compatibility
+
+- [ ] Create list of supported coding agents (Claude Code, Gemini CLI, Mistral Vibe, OpenAI Codex, etc.)
+- [ ] Ensure instructions work across LLMs (use standard conventions: AGENT.md, skill format, etc.)
