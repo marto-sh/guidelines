@@ -24,6 +24,7 @@
 
 - [ ] Define philosophy and guiding principles
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
+- [ ] Distill knowledge from https://12factor.net/ into architecture documents
 
 ## Cross-Provider Compatibility
 
@@ -33,3 +34,6 @@
 ## Experiments
 
 - [ ] Design experiment to determine which models can run on consumer hardware (in particular Mac Mini)
+- [ ] What's the performance gain of having an LLM fine tuned on Rust?
+- [ ] What's the performance gain of giving access to the AST to an LLM?
+- [ ] How much performance can be improved on a given model (distillation, profiling and optimization, etc.)?
