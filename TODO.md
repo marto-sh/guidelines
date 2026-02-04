@@ -29,3 +29,7 @@
 
 - [ ] Create list of supported coding agents (Claude Code, Gemini CLI, Mistral Vibe, OpenAI Codex, etc.)
 - [ ] Ensure instructions work across LLMs (use standard conventions: AGENT.md, skill format, etc.)
+
+## Experiments
+
+- [ ] Design experiment to determine which models can run on consumer hardware (in particular Mac Mini)
