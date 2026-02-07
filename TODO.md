@@ -32,6 +32,7 @@
 
 ## Experiments
 
+- [ ] Can an LLM reliably follow an atomic rule?
 - [ ] Design experiment to determine which models can run on consumer hardware (in particular Mac Mini)
 - [ ] What's the performance gain of having an LLM fine tuned on Rust?
 - [ ] What's the performance gain of giving access to the AST to an LLM?
