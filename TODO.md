@@ -7,7 +7,6 @@
 
 ## ADRs to Create
 
-- [ ] Atomic commits should include reasoning trace for agent review
 - [ ] Testing
 - [ ] Context preservation (capture reasoning and context for handoff)
 - [ ] Git worktree isolation for parallel agent work
