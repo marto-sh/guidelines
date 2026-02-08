@@ -25,6 +25,25 @@
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
 - [ ] Distill knowledge from https://12factor.net/ into architecture documents
 - [ ] Distill knowledge from https://martinfowler.com into architecture documents
+- [ ] Research and document key tech influencers in design patterns and architectures
+  - [ ] Uncle Bob (Robert C. Martin)
+  - [ ] Rich Hickey
+  - [ ] Martin Fowler
+  - [ ] Eric Evans
+  - [ ] Vaughn Vernon
+  - [ ] Greg Young
+  - [ ] Udi Dahan
+  - [ ] Jimmy Bogard
+  - [ ] Mark Seemann
+  - [ ] Vladimir Khorikov
+  - [ ] Christopher Alexander
+  - [ ] Ralph Johnson
+  - [ ] James Coplien
+  - [ ] Ward Cunningham
+  - [ ] Kent Beck
+  - [ ] Michael Nygard
+  - [ ] Nat Pryce
+  - [ ] Sam Newman
 
 ## Cross-Provider Compatibility
 
