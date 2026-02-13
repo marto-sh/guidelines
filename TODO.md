@@ -50,6 +50,10 @@
 - [ ] Create list of supported coding agents (Claude Code, Gemini CLI, Mistral Vibe, OpenAI Codex, etc.)
 - [ ] Ensure instructions work across LLMs (use standard conventions: AGENT.md, skill format, etc.)
 
+## Refactor
+
+- [ ] Move experiments to doc instead of docs/ and delete the docs/ folder
+
 ## Experiments
 
 - [ ] Can an LLM reliably follow an atomic rule?
