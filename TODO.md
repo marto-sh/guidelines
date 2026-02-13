@@ -62,3 +62,4 @@
 - [ ] What's the performance gain of giving access to the AST to an LLM?
 - [ ] How much performance can be improved on a given model (distillation, profiling and optimization, etc.)?
 - [ ] Assess if we can offload knowledge from LLM weights and have them stored in a separate, white-box system (e.g. a database)
+- [ ] Evaluate https://docs.boxlite.ai/ for ADR-0005
