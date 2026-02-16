@@ -23,8 +23,8 @@
 
 - [ ] Define philosophy and guiding principles
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
-- [ ] Distill knowledge from https://12factor.net/ into architecture documents
-- [ ] Distill knowledge from https://martinfowler.com into architecture documents
+- [ ] Distill knowledge from <https://12factor.net/> into architecture documents
+- [ ] Distill knowledge from <https://martinfowler.com> into architecture documents
 - [ ] Research and document key tech influencers in design patterns and architectures
   - [ ] Uncle Bob (Robert C. Martin)
   - [ ] Rich Hickey
@@ -52,8 +52,6 @@
 
 ## Refactor
 
-- [ ] Move experiments to doc instead of docs/ and delete the docs/ folder
-
 ## Experiments
 
 - [ ] Can an LLM reliably follow an atomic rule?
@@ -62,4 +60,4 @@
 - [ ] What's the performance gain of giving access to the AST to an LLM?
 - [ ] How much performance can be improved on a given model (distillation, profiling and optimization, etc.)?
 - [ ] Assess if we can offload knowledge from LLM weights and have them stored in a separate, white-box system (e.g. a database)
-- [ ] Evaluate https://docs.boxlite.ai/ for ADR-0005
+- [ ] Evaluate <https://docs.boxlite.ai/> for ADR-0005
