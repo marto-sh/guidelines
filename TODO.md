@@ -8,6 +8,7 @@
 
 ## Process
 
+- [ ] Define Git merge strategy for PRs (merge commit, rebase, or squash)
 - [ ] Define how agent sessions should be stored so that precious human inputs (domain knowledge, design decisions, feedback) are never lost. Sessions contain irreplaceable context that cannot be reconstructed from code alone. Smarter agents could also review past sessions to extract learnings that less capable agents wouldn't have gathered at the time.
 
 ## ADRs to Create
