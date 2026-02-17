@@ -47,34 +47,30 @@ To make your Gherkin scenarios executable, you need to write "step definitions" 
     *   **Reference:** For a complete, one-time setup guide, see the [Cucumber Setup Guide](./references/bdd/README.md).
 
 2.  **Define the World:**
-    *   **Instruction:** In your test runner file (e.g., `tests/cucumber.rs`), define a `World` struct. This struct holds the state for each scenario (e.g., the user, the system under test, etc.).
+    *   **Instruction:** In your test runner file (`tests/cucumber.rs`), define a `World` struct. This struct holds the state for each scenario (e.g., the user, the system under test, etc.). The runner file should only contain the `World` struct and the `main()` entry point.
     *   **Reference:** The [Cucumber Setup Guide](./references/bdd/README.md) contains a full example of a `World` struct.
 
 3.  **Write Step Definitions:**
-    *   **Instruction:** For each Gherkin step (`Given`, `When`, `Then`), write a corresponding Rust function annotated with a `cucumber` macro. Use regular expressions to capture arguments from the step.
+    *   **Instruction:** Create step definitions in separate modules under `tests/steps/`, one file per feature file (1:1 mapping, kebab-case to snake_case). Each step function is annotated with a `cucumber` macro and references the `World` struct via `crate::MyWorld`.
     *   **Example:**
         ```rust
-        // In tests/cucumber.rs
+        // In tests/steps/user_authentication.rs
 
-        use cucumber::{given, when, then, World};
-
-        // Assume `MyWorld` struct and a `User` struct exist
+        use cucumber::{given, when, then};
+        use crate::MyWorld;
 
         #[given(regex = r#"I am a registered user with the username \"(\w+)\""#)]
         fn registered_user(world: &mut MyWorld, username: String) {
-            // Logic to create or fetch a user and store it in the world
             world.user = Some(User::new(&username));
         }
 
         #[when(regex = r#"I enter my username \"(\w+)\" and password \"(\w+)\""#)]
         fn enter_credentials(world: &mut MyWorld, user: String, pass: String) {
-            // Logic to perform the login action
             world.login_result = world.auth_service.login(&user, &pass);
         }
 
         #[then(regex = r#"I should be redirected to my dashboard"#)]
         fn redirected_to_dashboard(world: &mut MyWorld) {
-            // Assert that the login result was successful
             assert!(world.login_result.is_ok());
         }
         ```

@@ -19,7 +19,7 @@ Gherkin uses a set of keywords to structure executable specifications:
 
 Here’s how to set up `cucumber` in your Rust project.
 
-### 1. Project Structure
+### Project Structure
 
 Your BDD files should be organized as follows:
 
@@ -27,14 +27,23 @@ Your BDD files should be organized as follows:
 .
 ├── Cargo.toml
 ├── features/
-│   └── my_feature.feature  # Your Gherkin feature files
+│   └── my_feature.feature       # Your Gherkin feature files
 └── tests/
-    └── cucumber.rs         # The Rust test runner and step definitions
+    ├── cucumber.rs               # Test runner: World struct + main() only
+    └── steps/
+        ├── mod.rs                # Declares step definition modules
+        └── my_feature.rs         # Step definitions for the feature
 ```
+
+Feature files and step definition files have a 1:1 mapping. Each `.feature` file gets a corresponding `.rs` file under `tests/steps/` with the same name (kebab-case to snake_case). The `tests/cucumber.rs` file stays minimal — it only holds the `World` struct and the `main()` entry point. If shared steps emerge across features, they can be extracted into a common module at that point.
 
 The `init_bdd_feature.sh` script in this skill can be used to quickly create new `.feature` files.
 
-### 2. Update `Cargo.toml`
+### `.gitignore`
+
+Use the template at `assets/.gitignore.template` as a starting point. It will grow as the project adds build artifacts, IDE files, environment variables, etc.
+
+### `Cargo.toml`
 
 You need to add `cucumber` and `tokio` to your dependencies. You also need to declare a new test target to act as the BDD test runner.
 
@@ -50,7 +59,7 @@ name = "cucumber"
 harness = false
 ```
 
-### 3. Example: A Simple Calculator
+### Example: A Simple Calculator
 
 Let's walk through testing a simple calculator.
 
@@ -71,19 +80,20 @@ Feature: Calculator
 
 #### The Rust Implementation
 
-**`tests/cucumber.rs`**
+**`tests/cucumber.rs`** — Test runner (World struct + entry point only)
 ```rust
-use cucumber::{given, then, when, World};
-use std::fmt::Debug;
+mod steps;
+
+use cucumber::World;
 
 // This is our domain object.
 #[derive(Debug, Default)]
-struct Calculator {
-    result: i32,
+pub struct Calculator {
+    pub result: i32,
 }
 
 impl Calculator {
-    fn add(&mut self, a: i32, b: i32) {
+    pub fn add(&mut self, a: i32, b: i32) {
         self.result = a + b;
     }
 }
@@ -92,8 +102,8 @@ impl Calculator {
 // A new `World` is created for each scenario.
 #[derive(Debug, World)]
 #[world(init = Self::new)]
-struct MyWorld {
-    calculator: Calculator,
+pub struct MyWorld {
+    pub calculator: Calculator,
 }
 
 impl MyWorld {
@@ -104,12 +114,26 @@ impl MyWorld {
     }
 }
 
-// --- Step definitions ---
-// The `cucumber` crate uses macros to link Gherkin steps to Rust functions.
-// Regular expressions are used to capture arguments from the step text.
+// This function is the entry point for running the cucumber tests.
+// It will discover and run all feature files in the `features` directory.
+#[tokio::main]
+async fn main() {
+    MyWorld::run("features").await;
+}
+```
+
+**`tests/steps/mod.rs`**
+```rust
+pub mod calculator;
+```
+
+**`tests/steps/calculator.rs`** — Step definitions for the calculator feature
+```rust
+use cucumber::{given, then, when};
+use crate::MyWorld;
 
 #[given("I have a calculator")]
-fn i_have_a_calculator(world: &mut MyWorld) {
+fn i_have_a_calculator(_world: &mut MyWorld) {
     // The world is already initialized with a new calculator,
     // so this step is just for declarative clarity.
 }
@@ -123,17 +147,9 @@ fn i_add_two_numbers(world: &mut MyWorld, a: i32, b: i32) {
 fn the_result_should_be(world: &mut MyWorld, expected_result: i32) {
     assert_eq!(world.calculator.result, expected_result);
 }
-
-// This function is the entry point for running the cucumber tests.
-// It will discover and run all feature files in the `features` directory.
-#[tokio::main]
-async fn main() {
-    MyWorld::run("features").await;
-}
-
 ```
 
-### 4. Running the Tests
+### Running the Tests
 
 To run your BDD tests, execute the following command:
 
