@@ -71,6 +71,9 @@ This skill will guide you through the creation of the core artifacts of Strategi
     *   **Generic:** Solved problems that can be handled by off-the-shelf software (e.g., authentication, email).
     *   **Action:** Use the `architecture_overview.template.md` asset.
     *   **(Reference):** See `references/subdomains.md`.
+    *   **Rules:**
+        *   **Explain classifications in context before asking.** Abstract definitions (Core, Supporting, Generic) are not enough. Always illustrate what each classification means for the specific project before asking the domain expert to classify. Bad: "Is this Core, Supporting, or Generic?". Good: "Core means this is what makes your product unique — for example, X. Supporting means it's needed but not the differentiator — for example, Y. With that in mind, where does Z fit?"
+        *   **Propose a classification with reasoning.** Don't just ask — present your best assessment and explain why, then let the domain expert correct you. This gives them something concrete to react to.
 
 5.  **Map Bounded Contexts:** Create a `CONTEXT_MAP.md` file to visualize the relationships between your bounded contexts.
     *   **Action:** Use the `context_map.template.md` asset as a guide. It includes examples of how to create context map diagrams using Mermaid.js.
