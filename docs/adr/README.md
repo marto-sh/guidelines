@@ -8,3 +8,4 @@
 * [8. Share Guidelines Across Projects](0008-share-guidelines-across-projects.md)
 * [9. Use a Tiered Commit and PR Structure](0009-use-a-tiered-commit-and-pr-structure.md)
 * [10. Use jiff for DateTime handling](0010-use-jiff-for-datetime-handling.md)
+* [11. Distill Active Decisions into Agent Instructions](0011-distill-active-decisions-into-agent-instructions.md)

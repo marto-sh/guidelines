@@ -8,8 +8,9 @@
 
 ## Process
 
-- [ ] Define Git merge strategy for PRs (merge commit, rebase, or squash)
 - [ ] Define how agent sessions should be stored so that precious human inputs (domain knowledge, design decisions, feedback) are never lost. Sessions contain irreplaceable context that cannot be reconstructed from code alone. Smarter agents could also review past sessions to extract learnings that less capable agents wouldn't have gathered at the time.
+- [ ] Explore having ADR creation automatically generate implementation tasks (e.g., update AGENT.md per ADR 0011, append to TODO.md, or create GitHub issues) so that decisions produce actionable work items agents can pick up
+- [ ] Define work tracking vocabulary and structure (e.g., checklist = deterministic list of items, task = atomic unit of work, workstream = series of tasks toward a goal). Likely warrants an ADR.
 
 ## ADRs to Create
 
@@ -25,6 +26,8 @@
 
 ## Tooling
 
+- [ ] Implement pre-commit hook for ADR 0011: block commit when `docs/adr/*.md` is staged without `AGENT.md`, prompt human for confirmation or require `AGENTMD_VERIFIED=1` for agents
+- [ ] Implement CI manual confirmation check for ADR 0011: required review status on PRs that modify `docs/adr/` files
 - [ ] Linter/validator for BETs (ensure frontmatter, required sections, valid status)
 - [ ] Linter/validator for Experiments (ensure frontmatter, required sections, valid status)
 
@@ -60,6 +63,10 @@
 - [ ] Create list of supported coding agents (Claude Code, Gemini CLI, Mistral Vibe, OpenAI Codex, etc.)
 - [ ] Ensure instructions work across LLMs (use standard conventions: AGENT.md, skill format, etc.)
 - [ ] Adopt the `AGENTS.md` convention: add an `AGENTS.md` file at repository root (recognised by OpenAI Codex, Gemini CLI, and others) alongside the existing `AGENT.md`. Define which file name takes precedence per agent and whether the two should be kept in sync or unified.
+
+## ADRs to Revise
+
+- [ ] Revise ADR 0008 (Share Guidelines Across Projects) to account for ADR 0011 (distilled decisions in AGENT.md travel with the shared guidelines)
 
 ## Refactor
 
