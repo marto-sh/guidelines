@@ -79,6 +79,11 @@ This skill will guide you through the creation of the core artifacts of Strategi
     *   **Action:** Use the `context_map.template.md` asset as a guide. It includes examples of how to create context map diagrams using Mermaid.js.
     *   **Action:** Define the relationship between each context (e.g., Shared Kernel, Customer-Supplier, Conformist, Anti-Corruption Layer).
     *   **(Reference):** See `references/context_mapping_patterns.md` for detailed explanations of each relationship type.
+    *   **Rules:**
+        *   **Explain the goal and decisions before proposing.** The context map answers two questions: (1) which contexts talk to each other and who depends on whom, and (2) how they talk to each other. Explain both questions and the available patterns before asking the domain expert to choose. Bad: jumping straight to "I propose Customer-Supplier here". Good: first explaining what the patterns mean and what trade-offs they carry.
+        *   **Consider the development context when choosing patterns.** Coupling decisions depend on who is building the software. Bad: always recommending loose coupling because that's the textbook answer. Good: recognizing that in an agentic context, refactoring costs are lower, so starting tightly coupled and splitting later may be pragmatic.
+        *   **Don't default to traditional patterns.** Context integration can take unconventional forms. For example, in an AI-native product, agent-to-agent conversation using the Ubiquitous Language can replace traditional API contracts or shared models. Always consider what fits the project's nature.
+        *   **Be precise about directionality.** When describing a relationship, specify who initiates what and under which conditions. Bad: "Billing talks to Shipping". Good: "Billing notifies Shipping when payment is confirmed; Shipping queries Billing to check whether a customer has outstanding invoices before dispatching."
 
 ### Phase 4: Continuous Refinement
 
