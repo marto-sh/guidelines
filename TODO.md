@@ -4,6 +4,11 @@
 
 - [ ] Add a code review skill (review PRs or commits)
 - [ ] Add a learning skill whenever human gives feedback for the agent to remember
+- [ ] Add continuous learning to skills: after completing a skill, the agent should reflect on what needed human guidance, what went well, and what went wrong — then update the skill's rules and examples to avoid repeating mistakes. This should be a systematic step built into every skill, not ad-hoc.
+
+## Process
+
+- [ ] Define how agent sessions should be stored so that precious human inputs (domain knowledge, design decisions, feedback) are never lost. Sessions contain irreplaceable context that cannot be reconstructed from code alone. Smarter agents could also review past sessions to extract learnings that less capable agents wouldn't have gathered at the time.
 
 ## ADRs to Create
 
