@@ -22,11 +22,28 @@ This skill will guide you through the creation of the core artifacts of Strategi
 1.  **Articulate the Domain Vision:** Create a `DOMAIN_VISION.md` file. This is a short, elevator pitch for the project that aligns the team on its purpose, scope, and goals.
     *   **Action:** Use the `domain_vision.template.md` asset as a guide.
     *   **Tool:** `write_file(file_path='DOMAIN_VISION.md', content=...)`
+    *   **Rules:**
+        *   **Focus on current scope.** Do not include aspirational future states. This is a living document — expand it when the time comes. Bad: "small businesses, and eventually enterprises". Good: "small businesses".
+        *   **"For"**: Who you are building for NOW.
+        *   **"Who"**: Describe the FELT PAIN of the target users — what they actually experience. Do not project product philosophy or ideology here. Bad: "tired of vendor lock-in and proprietary platforms". Good: "tired of manually copying the same data into every new tool they try".
+        *   **"The (product) is a"**: A short product category label, one line. Bad: "an AI-powered, cloud-native platform that automates invoicing". Good: "an invoicing tool".
+        *   **"That"**: What the product does for the user. Do not include product philosophy or differentiation here.
+        *   **"Unlike"**: Be factual about competitors, not harsh. Research actual competitors. Describe what each alternative lacks, not why they're bad. Bad: "bloated, overpriced legacy tools that trap your data". Good: "traditional invoicing software, which requires manual data entry and offers no API integration".
+        *   **"Our product"**: Primary differentiation and product values. Do not repeat what's already in "That".
+        *   **General:** Each section has a specific purpose — don't repeat information across sections. Prefer general terms over specific ones when the scope is broad. Bad: "job title, seniority level, and location". Good: "matching criteria". Challenge every word: "Is this the right word? Does it belong in THIS section?"
 
 2.  **Establish the Ubiquitous Language:** Create a `UBIQUITOUS_LANGUAGE.md` file. This is a living glossary of business terms with precise, unambiguous definitions, shared between developers and domain experts.
     *   **Action:** Use the `ubiquitous_language.template.md` asset to start building your glossary.
     *   **Tool:** `write_file(file_path='UBIQUITOUS_LANGUAGE.md', content=...)`
     *   **(Reference):** See `references/ubiquitous_language.md` for best practices.
+    *   **Rules:**
+        *   **Definitions describe what things ARE, not product features.** A definition should be recognizable to anyone outside the project. Bad: "An invoice automatically generated and sent via email when payment is due". Good: "A document requesting payment for goods or services delivered".
+        *   **Don't redefine common terms beyond recognition.** If a term has a universally understood meaning, keep the definition grounded. The product's behavior can differ from the definition. Bad: "An order is a real-time, AI-optimized fulfillment request". Good: "A customer's request to purchase one or more products".
+        *   **Use defined terms to describe each other.** Once a term is in the glossary, use it consistently. Bad: "A Shipment contains the customer's purchased items". Good: "A Shipment contains the items from an Order".
+        *   **Capitalize ubiquitous language terms** everywhere — in documents, descriptions, and eventually in code.
+        *   **Domain principles can belong in the glossary** if they are core to the product identity, even if they won't map directly to a code construct.
+        *   **Don't force terms to fit.** If a term keeps evolving or doesn't hold up to scrutiny, drop it and revisit later. The glossary is a living document.
+        *   **No technical jargon.** Use business language. Bad: "an upserted entity at runtime". Good: "a record that is created or updated".
 
 ### Phase 2: Explore the Domain via Event Storming
 
@@ -37,6 +54,14 @@ This skill will guide you through the creation of the core artifacts of Strategi
         3.  Group commands and events around the **Aggregates** (the business objects they relate to).
         4.  Identify natural seams and groupings in the timeline, which suggest emergent **Bounded Contexts**.
     *   **(Reference):** See `references/event_storming_guide.md` for a detailed guide.
+    *   **Rules:**
+        *   **Be systematic when brainstorming events.** For each term in the Ubiquitous Language, ask: (1) What is its full lifecycle? (create/draft, evolve, end/archive) (2) How does it interact with every other term? This must be done unprompted, not after being asked.
+        *   **Think bidirectionally.** Most flows work in both directions. Bad: only modeling "customer places order". Good: also considering "order is returned by customer", "supplier cancels order". Always ask: what happens in the other direction?
+        *   **Model the full lifecycle.** If something can start, it can end. If something can be created, it might be updated or deleted. Bad: `OrderPlaced` with no `OrderCancelled` or `OrderCompleted`. Good: modeling the full lifecycle from creation to terminal states.
+        *   **Look for redundant events.** If two events describe the same decision point through different paths, they may be the same mechanism. Bad: both `PaymentApproved` and `OrderPaymentConfirmed` for the same action. Good: one event with clear ownership.
+        *   **Consider lifecycle states.** Entities may have meaningful intermediate states rather than simple create/update. Bad: `OrderCreated` then `OrderUpdated`. Good: `OrderDrafted`, `OrderSubmitted`, `OrderConfirmed` when those states carry distinct business meaning.
+        *   **Use ubiquitous language terms consistently** and capitalize them throughout the document.
+        *   **No technical jargon.** Use business language, not developer language. Bad: "the entity is persisted at runtime". Good: "the Order is saved".
 
 ### Phase 3: Define and Classify the Architecture
 
