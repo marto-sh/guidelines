@@ -14,6 +14,7 @@
 ## ADRs to Create
 
 - [ ] Define standard repository setup (public, AGPL-3.0 license)
+- [ ] DateTime conventions (UTC storage, audit fields, serialization format, no local time in domain)
 - [ ] Testing
 - [ ] Context preservation (capture reasoning and context for handoff)
 - [ ] Git worktree isolation for parallel agent work

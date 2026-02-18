@@ -7,3 +7,4 @@
 * [7. Use Experiments for Empirical Validation](0007-use-experiments-for-empirical-validation.md)
 * [8. Share Guidelines Across Projects](0008-share-guidelines-across-projects.md)
 * [9. Use a Tiered Commit and PR Structure](0009-use-a-tiered-commit-and-pr-structure.md)
+* [10. Use jiff for DateTime handling](0010-use-jiff-for-datetime-handling.md)
