@@ -10,7 +10,7 @@ if [ -z "$1" ]; then
 fi
 
 FEATURE_NAME_RAW="$1"
-FEATURE_NAME_KEBAB=$(echo "$FEATURE_NAME_RAW" | sed 's/\([A-Z]\)/-\L\1/g' | sed -e 's/^-//' | tr '[:upper:]' '[:lower:]')
+FEATURE_NAME_KEBAB=$(echo "$FEATURE_NAME_RAW" | sed 's/ /-/g' | sed 's/\([A-Z]\)/-\L\1/g' | sed -e 's/^-//' | sed 's/--/-/g' | tr '[:upper:]' '[:lower:]')
 
 DIR_PATH="./features" # Default directory for BDD feature files
 ASSETS_PATH="$(dirname "$0")/../assets"
