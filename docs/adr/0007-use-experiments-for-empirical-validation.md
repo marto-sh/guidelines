@@ -40,13 +40,15 @@ Chosen option: **Dedicated Experiments framework**, because experiments have dis
 
 This means:
 
-1. **New document type**: Experiments live in `docs/experiments/` with their own structure and lifecycle.
+1. **New document type**: Experiments are a distinct document type with their own structure and lifecycle.
 
-2. **Clear relationships**: Experiments can provide evidence toward BETs, validate ADR assumptions, test feature ideas, or stand alone. Both successful and unsuccessful experiments can trigger actions.
+2. **Separation of framework and implementations**: The experiment *framework* (template, design skill) lives in the guidelines repository alongside other methodology. Experiment *implementations* (scripts, assets, run results) live in a dedicated `experiments` repository to avoid bloating the guidelines submodule consumed by all projects.
 
-3. **Reproducible by design**: Each experiment has a stable definition with a `runs/` subdirectory tracking execution history. Experiments can be re-run as AI models and tools evolve.
+3. **Clear relationships**: Experiments can provide evidence toward BETs, validate ADR assumptions, test feature ideas, or stand alone. Both successful and unsuccessful experiments can trigger actions.
 
-4. **Automation-ready**: Experiments are designed to be executed by agents via a single command, with human review required before execution.
+4. **Reproducible by design**: Each experiment has a stable definition with a `runs/` subdirectory tracking execution history. Experiments can be re-run as AI models and tools evolve.
+
+5. **Automation-ready**: Experiments are designed to be executed by agents via a single command, with human review required before execution.
 
 ### Consequences
 
@@ -55,7 +57,10 @@ This means:
 * **Good**, because documenting all outcomes (including failures) prevents repeated dead ends
 * **Good**, because automation-first design aligns with agent-assisted development philosophy
 * **Good**, because separation from BETs/ADRs keeps each document type focused
+* **Good**, because the guidelines repository stays lean—consuming projects don't inherit experiment artifacts
+* **Good**, because a single experiments repo enables shared infrastructure across experiments (common harnesses, benchmarking scripts, data processing)
 * **Bad**, because adds another document type to maintain
+* **Bad**, because adds a separate repository to manage
 * **Bad**, because requires discipline to actually run experiments rather than just documenting hypotheses
 * **Neutral**, because value depends on actually using the framework—an unused framework provides no benefit
 
@@ -118,19 +123,35 @@ Create a separate document type with its own structure and lifecycle.
 
 ## More Information
 
-### Experiment Structure
+### Repository Layout
 
-Each experiment is a directory under `docs/experiments/` with date-based naming:
+The experiment framework is split across two repositories:
+
+**Guidelines repository** (this repo) — framework and methodology:
 
 ```
-docs/experiments/
-├── EXPERIMENT.template.md
-└── 2024-02-rust-comparison/
-    ├── EXPERIMENT.md       # Main document (YAML frontmatter + sections)
-    ├── scripts/            # Automation (single command to run)
-    ├── assets/             # Supporting materials
-    └── runs/               # Execution history
-        └── 2024-02-15-run.md
+guidelines/
+├── docs/experiments/
+│   └── EXPERIMENT.template.md   # Standard structure for all experiments
+└── skills/experiments/
+    └── design-experiment/       # Skill for designing new experiments
+```
+
+**Experiments repository** (dedicated repo) — implementations and results:
+
+```
+experiments/
+├── README.md                          # Index of all experiments
+├── shared/                            # Common harnesses, scripts, utilities
+├── 2026-02-rust-comparison/
+│   ├── EXPERIMENT.md                  # Following the template from guidelines
+│   ├── scripts/                       # Automation (single command to run)
+│   ├── assets/                        # Supporting materials
+│   └── runs/                          # Execution history
+│       └── 2026-02-15-run.md
+└── 2026-03-atomic-rule-following/
+    ├── EXPERIMENT.md
+    └── ...
 ```
 
 ### Main Document Sections
