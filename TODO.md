@@ -21,6 +21,7 @@
 - [ ] Agent PR reviews
 - [ ] Agent-human collaboration
 - [ ] Task partitioning (divide work to minimize agent conflicts)
+- [ ] CI/CD with local feedback mode (avoid remote server calls for faster iteration)
 
 ## Tooling
 
@@ -29,6 +30,7 @@
 
 ## Documentation
 
+- [ ] Research current approaches to context engineering for coding agents: <https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html>
 - [ ] Define philosophy and guiding principles
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
 - [ ] Distill knowledge from <https://12factor.net/> into architecture documents
@@ -57,11 +59,13 @@
 
 - [ ] Create list of supported coding agents (Claude Code, Gemini CLI, Mistral Vibe, OpenAI Codex, etc.)
 - [ ] Ensure instructions work across LLMs (use standard conventions: AGENT.md, skill format, etc.)
+- [ ] Adopt the `AGENTS.md` convention: add an `AGENTS.md` file at repository root (recognised by OpenAI Codex, Gemini CLI, and others) alongside the existing `AGENT.md`. Define which file name takes precedence per agent and whether the two should be kept in sync or unified.
 
 ## Refactor
 
 ## Experiments
 
+- [ ] **Multi-agent conflict resolution**: when two agents work in parallel and produce conflicting changes (e.g. overlapping PRs), what is the best strategy for an agent to resolve the conflict? Does pulling context from both PRs (understanding the intent behind each change) yield better resolutions than treating it as a pure text merge? This is distinct from commit reorganization — it is about understanding intent to resolve semantic conflicts.
 - [ ] Can an LLM reliably follow an atomic rule?
 - [ ] Design experiment to determine which models can run on consumer hardware (in particular Mac Mini)
 - [ ] What's the performance gain of having an LLM fine tuned on Rust?
