@@ -36,6 +36,8 @@
 - [ ] Research current approaches to context engineering for coding agents: <https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html>
 - [ ] Define philosophy and guiding principles
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
+- [ ] Bet: Agents reliably apply established engineering patterns at scale (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
+- [ ] Bet: Agents cannot yet invent novel abstractions (short/medium term) (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 - [ ] Distill knowledge from <https://12factor.net/> into architecture documents
 - [ ] Distill knowledge from <https://martinfowler.com> into architecture documents
 - [ ] Incorporate learnings from The Bitter Lesson (<http://www.incompleteideas.net/IncIdeas/BitterLesson.html>)
