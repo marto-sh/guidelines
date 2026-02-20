@@ -81,3 +81,15 @@
 ## Interesting Ideas
 
 - [ ] François Chollet's analogy between agentic coding and ML training: if spec+tests are the optimization goal and agents are the optimizer, the generated codebase is a blackbox model — implying classic ML issues (overfitting to spec, Clever Hans shortcuts, data leakage, concept drift) will hit agentic coding too. What mitigations apply? What is the "Keras of agentic coding" — the optimal high-level abstractions for humans to steer codebase generation? (<https://x.com/fchollet/status/2024519439140737442>)
+
+## Interesting Sources
+
+### Influencers
+
+- François Chollet
+- Yann LeCun
+- Chris Lattner
+
+### Blogs
+
+- <https://www.modular.com/>
