@@ -14,6 +14,44 @@ The development process heavily emphasizes Behavior-Driven Development (BDD) and
 *   **DDD:** For domain modeling and strategic design, consult the DDD skills in `skills/ddd/`.
 *   **Development Process:** A detailed explanation of the development process can be found in `DEVELOPMENT_PROCESS.md`.
 
+## Project Decisions
+
+These rules are distilled from Architecture Decision Records in `docs/adr/`. For full context and rationale, read the linked ADR. See [ADR 0011](docs/adr/0011-distill-active-decisions-into-agent-instructions.md) for why and how this section is maintained.
+
+### Language
+
+*From [ADR 0003](docs/adr/0003-use-rust-as-the-primary-programming-language.md)*
+
+*   Use **Rust** as the primary programming language for all new code
+*   Leverage the compiler as a feedback loop — fix all compiler errors and Clippy warnings before considering a change complete
+*   Prefer Rust-native crates when available; Python interop is permitted for ML/AI when no Rust alternative exists
+
+### Commits
+
+*From [ADR 0004](docs/adr/0004-use-conventional-commits.md)*
+
+*   Use **Conventional Commits** format: `type(scope): description`
+*   Valid types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+*   Commit messages are validated by Cocogitto hooks and CI — non-conforming commits will be rejected
+
+### Git Workflow
+
+*From [ADR 0009](docs/adr/0009-use-a-tiered-commit-and-pr-structure.md)*
+
+*   **Atomic commits**: each commit is one logical change, describable without the word "and." Every commit must leave the codebase in a passing state (compiles, tests pass)
+*   **Logical PRs**: a coherent, reviewable unit of work composed of atomic commits. When a logical PR merges, its atomic commits are **squashed** into a single commit
+*   **Feature PRs**: the top-level PR merging into main. Composed of logical-level commits. Merged with **`--no-ff`** (merge commit)
+*   Use **stacked PRs** when a feature requires multiple logical PRs
+*   Navigate history: `git log --first-parent` for feature-level view, `git log <merge>^1..<merge>^2` for logical-level view
+
+### Multi-Agent Collaboration
+
+*From [ADR 0006](docs/adr/0006-design-processes-and-tools-for-multi-agent-collaboration.md)*
+
+*   **Favor isolation over coordination**: structure work so agents can operate independently rather than requiring synchronization
+*   **Design for context flow**: ensure outputs are machine-readable and provide sufficient context for downstream agents without human translation
+*   When designing or evaluating a process, ask: can multiple agents execute this simultaneously without conflicts? What boundaries prevent interference? How does output become input for the next agent?
+
 ## Clarifying Requirements
 
 When requirements are unclear or ambiguous, always seek clarification from the human user before proceeding. Do not make assumptions about the user's intent. Ask specific questions to ensure you understand:

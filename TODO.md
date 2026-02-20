@@ -8,8 +8,9 @@
 
 ## Process
 
-- [ ] Define Git merge strategy for PRs (merge commit, rebase, or squash)
-- [ ] Define how agent sessions should be stored so that precious human inputs (domain knowledge, design decisions, feedback) are never lost. Sessions contain irreplaceable context that cannot be reconstructed from code alone. Smarter agents could also review past sessions to extract learnings that less capable agents wouldn't have gathered at the time.
+- [ ] Define how agent sessions should be stored so that precious human inputs (domain knowledge, design decisions, feedback) are never lost. Sessions contain irreplaceable context that cannot be reconstructed from code alone. Smarter agents could also review past sessions to extract learnings that less capable agents wouldn't have gathered at the time. Raw human input is the strongest signal; reviewed/approved documents are weaker (may have been approved without full agreement). Specs, docs, etc. can be "views" dynamically generated from this ground truth.
+- [ ] Explore having ADR creation automatically generate implementation tasks (e.g., update AGENT.md per ADR 0011, append to TODO.md, or create GitHub issues) so that decisions produce actionable work items agents can pick up
+- [ ] Define work tracking vocabulary and structure (e.g., checklist = deterministic list of items, task = atomic unit of work, workstream = series of tasks toward a goal). Likely warrants an ADR.
 
 ## ADRs to Create
 
@@ -25,6 +26,8 @@
 
 ## Tooling
 
+- [ ] Implement pre-commit hook for ADR 0011: block commit when `docs/adr/*.md` is staged without `AGENT.md`, prompt human for confirmation or require `AGENTMD_VERIFIED=1` for agents
+- [ ] Implement CI manual confirmation check for ADR 0011: required review status on PRs that modify `docs/adr/` files
 - [ ] Linter/validator for BETs (ensure frontmatter, required sections, valid status)
 - [ ] Linter/validator for Experiments (ensure frontmatter, required sections, valid status)
 
@@ -33,8 +36,11 @@
 - [ ] Research current approaches to context engineering for coding agents: <https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html>
 - [ ] Define philosophy and guiding principles
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
+- [ ] Bet: Agents reliably apply established engineering patterns at scale (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
+- [ ] Bet: Agents cannot yet invent novel abstractions (short/medium term) (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 - [ ] Distill knowledge from <https://12factor.net/> into architecture documents
 - [ ] Distill knowledge from <https://martinfowler.com> into architecture documents
+- [ ] Incorporate learnings from The Bitter Lesson (<http://www.incompleteideas.net/IncIdeas/BitterLesson.html>)
 - [ ] Research and document key tech influencers in design patterns and architectures
   - [ ] Uncle Bob (Robert C. Martin)
   - [ ] Rich Hickey
@@ -61,6 +67,10 @@
 - [ ] Ensure instructions work across LLMs (use standard conventions: AGENT.md, skill format, etc.)
 - [ ] Adopt the `AGENTS.md` convention: add an `AGENTS.md` file at repository root (recognised by OpenAI Codex, Gemini CLI, and others) alongside the existing `AGENT.md`. Define which file name takes precedence per agent and whether the two should be kept in sync or unified.
 
+## ADRs to Revise
+
+- [ ] Revise ADR 0008 (Share Guidelines Across Projects) to account for ADR 0011 (distilled decisions in AGENT.md travel with the shared guidelines)
+
 ## Refactor
 
 ## Experiments
@@ -73,6 +83,7 @@
 - [ ] How much performance can be improved on a given model (distillation, profiling and optimization, etc.)?
 - [ ] Assess if we can offload knowledge from LLM weights and have them stored in a separate, white-box system (e.g. a database)
 - [ ] Evaluate <https://docs.boxlite.ai/> for ADR-0005
+- [ ] How can we prevent AI from overfitting on tests in a feedback loop? Code may pass tests but fail to generalize. (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 
 ## Projects
 
@@ -80,6 +91,8 @@
 
 ## Interesting Ideas
 
+- [ ] How can we ensure AI-generated code doesn't infringe copyrights? Smaller models that can't memorize large codebases may be forced to learn to code rather than regurgitate snippets — could model size be a lever for copyright safety? (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
+- [ ] As implementation becomes cheap, AI amplifies both good and bad structure — enforce a strict process of challenging architectural decisions, abstractions, and task definitions before jumping into implementation. (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 - [ ] François Chollet's analogy between agentic coding and ML training: if spec+tests are the optimization goal and agents are the optimizer, the generated codebase is a blackbox model — implying classic ML issues (overfitting to spec, Clever Hans shortcuts, data leakage, concept drift) will hit agentic coding too. What mitigations apply? What is the "Keras of agentic coding" — the optimal high-level abstractions for humans to steer codebase generation? (<https://x.com/fchollet/status/2024519439140737442>)
 
 ## Interesting Sources
