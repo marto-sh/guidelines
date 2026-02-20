@@ -21,6 +21,7 @@
 - [ ] Agent PR reviews
 - [ ] Agent-human collaboration
 - [ ] Task partitioning (divide work to minimize agent conflicts)
+- [ ] CI/CD with local feedback mode (avoid remote server calls for faster iteration)
 
 ## Tooling
 
@@ -29,6 +30,7 @@
 
 ## Documentation
 
+- [ ] Research current approaches to context engineering for coding agents: <https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html>
 - [ ] Define philosophy and guiding principles
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
 - [ ] Distill knowledge from <https://12factor.net/> into architecture documents
@@ -57,11 +59,13 @@
 
 - [ ] Create list of supported coding agents (Claude Code, Gemini CLI, Mistral Vibe, OpenAI Codex, etc.)
 - [ ] Ensure instructions work across LLMs (use standard conventions: AGENT.md, skill format, etc.)
+- [ ] Adopt the `AGENTS.md` convention: add an `AGENTS.md` file at repository root (recognised by OpenAI Codex, Gemini CLI, and others) alongside the existing `AGENT.md`. Define which file name takes precedence per agent and whether the two should be kept in sync or unified.
 
 ## Refactor
 
 ## Experiments
 
+- [ ] **Multi-agent conflict resolution**: when two agents work in parallel and produce conflicting changes (e.g. overlapping PRs), what is the best strategy for an agent to resolve the conflict? Does pulling context from both PRs (understanding the intent behind each change) yield better resolutions than treating it as a pure text merge? This is distinct from commit reorganization — it is about understanding intent to resolve semantic conflicts.
 - [ ] Can an LLM reliably follow an atomic rule?
 - [ ] Design experiment to determine which models can run on consumer hardware (in particular Mac Mini)
 - [ ] What's the performance gain of having an LLM fine tuned on Rust?
@@ -69,3 +73,23 @@
 - [ ] How much performance can be improved on a given model (distillation, profiling and optimization, etc.)?
 - [ ] Assess if we can offload knowledge from LLM weights and have them stored in a separate, white-box system (e.g. a database)
 - [ ] Evaluate <https://docs.boxlite.ai/> for ADR-0005
+
+## Projects
+
+- [ ] Build an RSS/feed aggregator for interesting ideas — curate sources like arXiv papers, thoughts from key thinkers (François Chollet, Yann LeCun, etc.), blog posts, and documentation updates from relevant websites. Goal: a single feed to stay on top of ideas relevant to the project.
+
+## Interesting Ideas
+
+- [ ] François Chollet's analogy between agentic coding and ML training: if spec+tests are the optimization goal and agents are the optimizer, the generated codebase is a blackbox model — implying classic ML issues (overfitting to spec, Clever Hans shortcuts, data leakage, concept drift) will hit agentic coding too. What mitigations apply? What is the "Keras of agentic coding" — the optimal high-level abstractions for humans to steer codebase generation? (<https://x.com/fchollet/status/2024519439140737442>)
+
+## Interesting Sources
+
+### Influencers
+
+- François Chollet
+- Yann LeCun
+- Chris Lattner
+
+### Blogs
+
+- <https://www.modular.com/>

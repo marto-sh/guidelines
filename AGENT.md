@@ -49,6 +49,12 @@ This research phase is especially important for:
 *   Technology comparisons (find existing benchmarks)
 *   Novel problem domains (understand the state of the art)
 
+## Security Rules
+
+The following rules are non-negotiable and apply to every task:
+
+- **NEVER commit credentials.** API keys, tokens, passwords, private keys, and any other secrets must never appear in committed files. Use environment variables, shell profiles, or a secrets manager instead. If a file contains a credential (even a placeholder), do not stage or commit it.
+
 ## Skill Authoring
 
 To maintain a high standard of skills, a dedicated skill for authoring new skills is available. Please refer to `skills/skill/authoring/SKILL.md` when you are tasked with creating a new skill. Adhering to this guide will ensure that new skills are well-defined, effective, and consistent with the existing skill set.
