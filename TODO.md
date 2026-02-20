@@ -89,6 +89,10 @@
 
 - [ ] Build an RSS/feed aggregator for interesting ideas — curate sources like arXiv papers, thoughts from key thinkers (François Chollet, Yann LeCun, etc.), blog posts, and documentation updates from relevant websites. Goal: a single feed to stay on top of ideas relevant to the project.
 
+## Learning
+
+- [ ] Research the state of embeddings: universal embedding spaces for language, vision, audio, and reasoning; similarity/differences in representation; operations that can be performed on embeddings
+
 ## Interesting Ideas
 
 - [ ] Train agents as teammates that learn from ADRs, past sessions, and human inputs to make consistent architectural and implementation choices, reducing the need for human alignment efforts (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
