@@ -9,3 +9,4 @@
 * [9. Use a Tiered Commit and PR Structure](0009-use-a-tiered-commit-and-pr-structure.md)
 * [10. Use jiff for DateTime handling](0010-use-jiff-for-datetime-handling.md)
 * [11. Distill Active Decisions into Agent Instructions](0011-distill-active-decisions-into-agent-instructions.md)
+* [12. Use Shared Crates with Unified API for Cross-Cutting Concerns](0012-use-shared-crates-with-unified-api-for-cross-cutting-concerns.md)
