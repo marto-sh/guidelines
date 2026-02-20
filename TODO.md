@@ -14,7 +14,7 @@
 
 ## ADRs to Create
 
-- [ ] Define standard repository setup (public, AGPL-3.0 license)
+- [ ] Define standard repository setup and project structure (public, AGPL-3.0 license, directory layout conventions — in particular: where should competition analysis, market research, and other non-code artifacts live?)
 - [ ] DateTime conventions (UTC storage, audit fields, serialization format, no local time in domain)
 - [ ] Testing
 - [ ] Context preservation (capture reasoning and context for handoff)
@@ -91,6 +91,7 @@
 
 ## Interesting Ideas
 
+- [ ] If LLMs can perform tasks at a reliability level comparable to code (linters, type checkers, automation tools), no one would challenge their output — just as no one challenges a linter today. The key question is whether we can get there. Supporting quote: *"A large fraction of historical engineering effort has gone into mechanical work: rewriting code, adapting interfaces, migrating systems, and reproducing existing patterns in new environments. AI is rapidly becoming better at these tasks than humans. We should not compete with automation at mechanical work. Instead, engineers should clarify intent with rigor, validate outcomes with tests, and improve their design. Human effort should concentrate where creativity and judgment matter most: and all engineers now have management responsibilities. As migration and implementation accelerate, architectural evolution is no longer limited by how fast humans can rewrite software, but by how clearly we can define where systems should go next."* (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 - [ ] How can we ensure AI-generated code doesn't infringe copyrights? Smaller models that can't memorize large codebases may be forced to learn to code rather than regurgitate snippets — could model size be a lever for copyright safety? (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 - [ ] As implementation becomes cheap, AI amplifies both good and bad structure — enforce a strict process of challenging architectural decisions, abstractions, and task definitions before jumping into implementation. (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 - [ ] François Chollet's analogy between agentic coding and ML training: if spec+tests are the optimization goal and agents are the optimizer, the generated codebase is a blackbox model — implying classic ML issues (overfitting to spec, Clever Hans shortcuts, data leakage, concept drift) will hit agentic coding too. What mitigations apply? What is the "Keras of agentic coding" — the optimal high-level abstractions for humans to steer codebase generation? (<https://x.com/fchollet/status/2024519439140737442>)
