@@ -38,6 +38,7 @@
 - [ ] Bet: Agents consistently apply tactical design patterns (DDD, hexagonal, coding guidelines)
 - [ ] Distill knowledge from <https://12factor.net/> into architecture documents
 - [ ] Distill knowledge from <https://martinfowler.com> into architecture documents
+- [ ] Incorporate learnings from The Bitter Lesson (<http://www.incompleteideas.net/IncIdeas/BitterLesson.html>)
 - [ ] Research and document key tech influencers in design patterns and architectures
   - [ ] Uncle Bob (Robert C. Martin)
   - [ ] Rich Hickey
@@ -80,6 +81,7 @@
 - [ ] How much performance can be improved on a given model (distillation, profiling and optimization, etc.)?
 - [ ] Assess if we can offload knowledge from LLM weights and have them stored in a separate, white-box system (e.g. a database)
 - [ ] Evaluate <https://docs.boxlite.ai/> for ADR-0005
+- [ ] How can we prevent AI from overfitting on tests in a feedback loop? Code may pass tests but fail to generalize. (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 
 ## Projects
 
