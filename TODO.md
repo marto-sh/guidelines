@@ -8,7 +8,7 @@
 
 ## Process
 
-- [ ] Define how agent sessions should be stored so that precious human inputs (domain knowledge, design decisions, feedback) are never lost. Sessions contain irreplaceable context that cannot be reconstructed from code alone. Smarter agents could also review past sessions to extract learnings that less capable agents wouldn't have gathered at the time.
+- [ ] Define how agent sessions should be stored so that precious human inputs (domain knowledge, design decisions, feedback) are never lost. Sessions contain irreplaceable context that cannot be reconstructed from code alone. Smarter agents could also review past sessions to extract learnings that less capable agents wouldn't have gathered at the time. Raw human input is the strongest signal; reviewed/approved documents are weaker (may have been approved without full agreement). Specs, docs, etc. can be "views" dynamically generated from this ground truth.
 - [ ] Explore having ADR creation automatically generate implementation tasks (e.g., update AGENT.md per ADR 0011, append to TODO.md, or create GitHub issues) so that decisions produce actionable work items agents can pick up
 - [ ] Define work tracking vocabulary and structure (e.g., checklist = deterministic list of items, task = atomic unit of work, workstream = series of tasks toward a goal). Likely warrants an ADR.
 
@@ -91,6 +91,8 @@
 
 ## Interesting Ideas
 
+- [ ] How can we ensure AI-generated code doesn't infringe copyrights? Smaller models that can't memorize large codebases may be forced to learn to code rather than regurgitate snippets — could model size be a lever for copyright safety? (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
+- [ ] As implementation becomes cheap, AI amplifies both good and bad structure — enforce a strict process of challenging architectural decisions, abstractions, and task definitions before jumping into implementation. (<https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software>)
 - [ ] François Chollet's analogy between agentic coding and ML training: if spec+tests are the optimization goal and agents are the optimizer, the generated codebase is a blackbox model — implying classic ML issues (overfitting to spec, Clever Hans shortcuts, data leakage, concept drift) will hit agentic coding too. What mitigations apply? What is the "Keras of agentic coding" — the optimal high-level abstractions for humans to steer codebase generation? (<https://x.com/fchollet/status/2024519439140737442>)
 
 ## Interesting Sources
