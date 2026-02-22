@@ -28,9 +28,12 @@ This skill should _not_ be used for:
    - **`SKILL.md` (Required):** The core skill file with:
      - **YAML Frontmatter:** Metadata including:
        - `name`: Unique, descriptive, atomic identifier using **action-oriented naming** with verb-noun pattern (e.g., `architecture/create-adr`, `bdd/author-and-implement-features`, `ddd/write-domain-vision`, `strategy/find-competitors`). Avoid noun-only names like `adr-best-practices` or `competitor-analysis`.
-       - `description`: Detailed explanation of what the skill does and when to use it
+       - `description`: Concise one-liner describing what the skill does — focus on the *what*, not the *how* or output format (those belong in Instructions)
        - `allowed-tools` (optional): List of specific tools the skill is permitted to use
-     - **Markdown Body:** Detailed, step-by-step instructions for the agent
+     - **Markdown Body:** The following sections in order:
+       - **Persona (Required):** A named persona (e.g., "The Research Librarian", "The Architectural Inquisitor") that defines the agent's posture, tone, and approach for this skill. Helps the agent calibrate behavior — whether to be rigorous, creative, systematic, challenging, etc.
+       - **When to Use (Required):** Activation and exclusion criteria
+       - **Instructions (Required):** Detailed, step-by-step instructions for the agent
    - **`scripts/` (Optional):** Directory for executable code the skill might use
    - **`references/` (Optional):** Additional documentation or reference materials
    - **`assets/` (Optional):** Static files like templates, data files, or images
@@ -41,8 +44,9 @@ This skill should _not_ be used for:
 
    These directories significantly enhance skill portability, maintainability, and usability. Even if empty initially, creating them provides a clear structure for future expansion.
 
-5. **Write Activation Criteria:** In the "When to Use" section, write precise activation criteria. Clearly state when the skill SHOULD and SHOULD NOT be used, following the progressive disclosure principle where the agent should only load detailed instructions when needed.
-6. **Refine Instructions:** When writing the instructions, adhere to the following best practices:
+5. **Define the Persona:** Write a named persona with a short descriptor (e.g., "**The Research Librarian:**"). Follow it with 1-2 sentences that define the agent's posture: what it prioritizes, how it engages with the user, and what makes it more than a passive executor. The persona should signal the right tone (rigorous, creative, systematic, challenging) without being a full character description.
+6. **Write Activation Criteria:** In the "When to Use" section, write precise activation criteria. Clearly state when the skill SHOULD and SHOULD NOT be used, following the progressive disclosure principle where the agent should only load detailed instructions when needed.
+7. **Refine Instructions:** When writing the instructions, adhere to the following best practices:
    - **Atomicity:** Each step should correspond to a single, distinct action.
    - **Clarity:** Use lists and bullet points to break down complex ideas. Prefer bullet points over long, comma-separated sentences.
    - **Tool Mapping:** Map each action to a specific, available tool (e.g., `run_shell_command`, `read_file`, `replace`).
@@ -50,4 +54,4 @@ This skill should _not_ be used for:
    - **Safety and Verification:** Include steps for verification, such as running tests, linters, or build commands after a modification.
    - **Planning:** For complex workflows, the first instruction should be to create a plan.
    - **Portability:** Ensure instructions work across different environments and AI agents.
-7. **Format and Output:** Present the completed skill in the structured `SKILL.md` format, detailing the Skill Name, the "When to Use" criteria, and the numbered "Instructions". Ensure the skill follows the open standard for maximum portability and extensibility.
+8. **Format and Output:** Present the completed skill in the structured `SKILL.md` format, with Persona, "When to Use" criteria, and numbered "Instructions". Ensure the skill follows the open standard for maximum portability and extensibility.
