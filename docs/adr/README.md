@@ -11,3 +11,4 @@
 * [11. Distill Active Decisions into Agent Instructions](0011-distill-active-decisions-into-agent-instructions.md)
 * [12. Use Shared Crates with Unified API for Cross-Cutting Concerns](0012-use-shared-crates-with-unified-api-for-cross-cutting-concerns.md)
 * [13. Use Three-Layer Research Process for Exploratory Learning](0013-use-three-layer-research-process-for-exploratory-learning.md)
+* [14. Use Dual-Structure Format for Research Literature Reviews](0014-use-dual-structure-format-for-research-literature-reviews.md)
