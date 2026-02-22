@@ -62,13 +62,7 @@ When requirements are unclear or ambiguous, always seek clarification from the h
 
 **Use structured questions with multiple-choice options.** When clarification is needed, present questions with 2-4 clear choices and brief descriptions. Always allow for a custom response in case none of the options fit. Use your platform's dedicated tool if available (e.g., `AskUserQuestion` in Claude Code, `ask_user_question` in Mistral Vibe). If no dedicated tool exists, present numbered options in your text output.
 
-**Group related questions into a single form.** When you have multiple related clarifications, group them (up to 4) into one form rather than asking them across separate responses. This:
-
-*   Reduces back-and-forth overhead
-*   Lets the user see the full scope of decisions needed
-*   Keeps related choices together for coherent decision-making
-
-**Keep questions focused and sequential.** If you have more than 4 questions, or if later questions depend heavily on earlier answers, split them across multiple form submissions. Ask the first batch, wait for answers, then ask follow-ups informed by those answers.
+**Always use the structured question tool.** When asking questions, always use the platform's dedicated tool (e.g., `AskUserQuestion` in Claude Code). Never dump multiple questions as inline text — use the form-based interface so the user can respond to each question individually with options and notes.
 
 It is better to ask for clarification upfront than to deliver something that does not match the user's expectations.
 
