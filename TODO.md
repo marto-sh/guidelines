@@ -2,6 +2,7 @@
 
 ## Skills to Create
 
+- [ ] Create `research/write-research-brief` skill — produces the human-oriented brief from a literature review, presents findings, and suggests next steps (experiments, ADRs, BETs). Requires a brief format ADR first.
 - [ ] Add a code review skill (review PRs or commits)
 - [ ] Add a learning skill whenever human gives feedback for the agent to remember
 - [ ] Add continuous learning to skills: after completing a skill, the agent should reflect on what needed human guidance, what went well, and what went wrong — then update the skill's rules and examples to avoid repeating mistakes. This should be a systematic step built into every skill, not ad-hoc.
@@ -73,6 +74,8 @@
 - [ ] Revise ADR 0008 (Share Guidelines Across Projects) to account for ADR 0011 (distilled decisions in AGENT.md travel with the shared guidelines)
 
 ## Refactor
+
+- [ ] Add Persona section to existing skills that don't have one (now a required section per `skill/authoring`)
 
 ## Experiments
 
