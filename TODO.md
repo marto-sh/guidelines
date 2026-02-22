@@ -30,6 +30,7 @@
 - [ ] Implement CI manual confirmation check for ADR 0011: required review status on PRs that modify `docs/adr/` files
 - [ ] Linter/validator for BETs (ensure frontmatter, required sections, valid status)
 - [ ] Linter/validator for Experiments (ensure frontmatter, required sections, valid status)
+- [ ] Research a unified markdown document validation tool — all our document types (ADRs, BETs, experiments, literature reviews, briefs) are markdown files with specific formats following progressive disclosure. A single tool could: enforce required sections and frontmatter per document type, create and update registry/index files, generate and refresh tables of contents, validate cross-references between documents. Existing leads: [mdvault](https://lib.rs/crates/mdvault) (Rust, schema-based frontmatter validation, type-aware scaffolding), [markdown-validator](https://github.com/mattbriggs/markdown-validator) (declarative structural rules), [rumdl](https://crates.io/crates/rumdl) (Rust markdown linter). Could extend `adrs` or build a new tool covering all document types.
 
 ## Documentation
 
@@ -88,6 +89,12 @@
 ## Projects
 
 - [ ] Build an RSS/feed aggregator for interesting ideas — curate sources like arXiv papers, thoughts from key thinkers (François Chollet, Yann LeCun, etc.), blog posts, and documentation updates from relevant websites. Goal: a single feed to stay on top of ideas relevant to the project.
+
+## Knowledge Management
+
+- [ ] Investigate broader knowledge management approach — how to capture ideas, fleeting thoughts, and notes that don't fit into research/experiments/ADRs/BETs. Useful reference: <https://diataxis.fr/>
+- [ ] Design freshness/maintenance mechanism for literature reviews — scheduled refresh (e.g., every 3 months), signal-driven refresh (e.g., new papers, news), or a combination. See ADR 0013.
+- [ ] Build tooling for research process (ADR 0013) — scripts or CLI to create research directories, generate templates, update the index. Enforce structure via CI/pre-commit hooks (similar to ADR tooling).
 
 ## Learning
 
