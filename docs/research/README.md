@@ -7,3 +7,4 @@ Literature reviews and research artifacts produced following
 
 | Topic | Status | Date | Summary |
 |-------|--------|------|---------|
+| [Universal Embedding Spaces](universal-embeddings/literature-review.md) | current | 2026-02-22 | Multimodal embedding convergence, modality gap, latent-space reasoning, and the Platonic Representation Hypothesis |
